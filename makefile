@@ -1,6 +1,6 @@
 COMP = gcc
-CFLAGS = 
-LDFLAGS = -ldl
+CFLAGS = -Iinclude
+LDFLAGS = -Llib -Wl,-rpath=lib
 
 default: release
 
@@ -19,6 +19,6 @@ dist/:
 
 release: lib dist/
 	$(COMP) main.c \
-	$(CFLAGS) $(LDFLAGS) \
+	$(CFLAGS) $(LDFLAGS) -lmylib \
 	-O3 -s \
 	-o dist/release
